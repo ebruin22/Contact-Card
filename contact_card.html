@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Contact Card</title>
+	<meta charset="UTF-8">
+	<link href="contact_styles.css" rel="stylesheet" type="text/css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js">
+	</script>
+	<script type="text/javascript">
+	$(document).ready(function(){
+		$(".form").on("click", "button", function(){
+			$(".contact_Card").append($("<div class='contact'>"));
+				$(".contact_Card div").html("<h2>" + $('#first_name').val() + " " + $('#last_name').val() + "</h2><p>" + $('#email').val() + "</p><p> " + $('#phone').val() + "</p><p>Click for description</p>");
+				$(".contact_Card").append($("<div class='hidden'>"));
+				$(".contact_Card div:nth-child(2)").html("<p>" + $('#description').val() + "</p>");
+				
+			$(".form input, textarea").val("");
+		
+		});
+
+		$(".contact_Card").on("click", "div", function(){
+			$(".contact_Card").find ('div').toggle();
+
+		});
+
+
+	});
+	</script>
+
+</head>
+<body>
+	<div class="form">
+		<h1>Add Your Contact's Information:</h1>
+		<label for="first_name">First Name:</label>
+		<input type="text" id="first_name" placeholder="First Name">
+		<label for="last_name"> Last Name:</label>
+		<input type="text" id="last_name" placeholder="Last Name">
+		<label for="email">Email:</label>
+		<input type="text" id="email" placeholder="Email Address">
+		<label for="phone#">Phone Number:</label>
+		<input type="text" id="phone" placeholder="Phone Number">
+		<label for="description">Description:</label>
+		<textarea name="description" id="description" placeholder="Enter description here..."></textarea>
+		<button id="submit">Add User</button>
+	</div>
+	<div class="contact_Card">
+	</div>
+</body>
+</html>
